@@ -30,3 +30,31 @@ battery cameras and hubs remain outside the upstream project's support.
 On a Pixel 10 running GrapheneOS, a simulated C200 camera was added and its
 live test video and recording thumbnails displayed successfully. This does not
 verify authentication, playback or compatibility with a physical camera.
+
+## Updating the source and the installed app
+
+The Android work is on `codex/android-port` in your fork. To download changes
+made to that branch, commit or stash any local work first, then run:
+
+```sh
+git switch codex/android-port
+git pull --ff-only origin codex/android-port
+```
+
+To bring in changes from the original project, fetch `upstream` and merge its
+`main` branch into your Android branch; resolve any conflicts before building:
+
+```sh
+git fetch upstream
+git merge upstream/main
+```
+
+If `upstream` is not configured in a fresh clone, add it once with
+`git remote add upstream https://github.com/AlphaNumeric99/backsight.git`.
+After editing or merging, rebuild as described above and install the APK with
+`adb install -r path/to/app-arm64-debug.apk`. The existing installation and
+app data can be retained only when the new APK has the same application ID
+and signing key. Debug keys are usually specific to the machine that built
+the APK, so a build from a different machine may not install over this one.
+Git updates the source; the installed app does not currently check GitHub or
+update itself.
