@@ -11,6 +11,7 @@ mod recordings;
 mod secrets;
 mod streams;
 mod thumbnails;
+mod updates;
 mod wire;
 
 use std::sync::Arc;
@@ -115,6 +116,7 @@ pub fn run() {
             }
         })
         .invoke_handler(tauri::generate_handler![
+            updates::check_android_update,
             commands::list_cameras,
             commands::get_camera,
             commands::discover,

@@ -3,6 +3,7 @@ import { version } from "../../../package.json";
 import { strings } from "@/lib/strings";
 import { BrandGlyph } from "@/components/brand";
 import { SettingsSection } from "./section";
+import { AndroidUpdateButton } from "./android-updates";
 
 const CREDITS = [
   { name: "pytapo", by: "Juraj Nyíri", url: "github.com/JurajNyiri/pytapo" },
@@ -26,6 +27,7 @@ export function AboutSection() {
           </p>
           <p className="mt-1 max-w-xl text-[13.5px] leading-relaxed text-fg-2">{strings.settings.aboutBody}</p>
           <p className="mt-1 text-[13px] text-fg-3">{strings.settings.license}</p>
+          <div className="mt-3"><AndroidUpdateButton /></div>
         </div>
       </div>
       <div className="px-5 py-4">

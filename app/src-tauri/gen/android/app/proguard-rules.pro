@@ -19,3 +19,8 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Called by the native Tauri runtime through JNI; R8 cannot see this call.
+-keep class io.github.shentharo.backsight.TauriActivity {
+  public app.tauri.plugin.PluginManager getPluginManager();
+}

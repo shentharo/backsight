@@ -1,4 +1,4 @@
-package io.github.alphanumeric99.backsight
+package io.github.shentharo.backsight
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

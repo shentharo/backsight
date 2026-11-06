@@ -17,6 +17,7 @@ import { useSettings } from "@/queries/settings";
 import { ApiEventBridge } from "@/queries/bridge";
 import { useUiStore } from "@/state/ui";
 import { AddCameraDialog } from "@/features/add-camera/add-camera-dialog";
+import { AndroidUpdateNotice } from "@/features/settings/android-updates";
 
 interface NavItem {
   to: "/" | "/multiview" | "/downloads" | "/settings";
@@ -199,6 +200,7 @@ export function RootLayout() {
       <ApiEventBridge />
       <ThemeSync />
       <AddCameraDialog />
+      <AndroidUpdateNotice />
       <Toaster />
     </div>
   );

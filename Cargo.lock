@@ -350,7 +350,7 @@ checksum = "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
 
 [[package]]
 name = "backsight"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "android-native-keyring-store",
  "base64 0.23.1",
@@ -4373,7 +4373,7 @@ dependencies = [
 
 [[package]]
 name = "tapo-camera"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "aes",
  "base64 0.23.1",
@@ -4403,7 +4403,7 @@ dependencies = [
 
 [[package]]
 name = "tapo-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "clap",
@@ -4415,7 +4415,7 @@ dependencies = [
 
 [[package]]
 name = "tapo-mock"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "aes",
  "anyhow",

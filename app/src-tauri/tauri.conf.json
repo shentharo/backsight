@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Backsight",
-  "version": "0.1.0",
-  "identifier": "io.github.alphanumeric99.backsight",
+  "version": "0.1.1",
+  "identifier": "io.github.shentharo.backsight",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",

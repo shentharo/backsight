@@ -56,5 +56,30 @@ After editing or merging, rebuild as described above and install the APK with
 app data can be retained only when the new APK has the same application ID
 and signing key. Debug keys are usually specific to the machine that built
 the APK, so a build from a different machine may not install over this one.
-Git updates the source; the installed app does not currently check GitHub or
-update itself.
+Git updates the source. The signed Android app checks this fork's public
+GitHub releases at startup and offers a link to a newer Android release. In
+Settings → About, "Check for Android updates" checks on demand. Download the
+APK from GitHub and confirm installation in Android; the app does not install
+silently. Only published releases tagged `android-vMAJOR.MINOR.PATCH` with a
+`backsight-android-arm64.apk` asset are considered.
+
+## Creating a signed Android release on this PC
+
+The signing key and its password are in `%USERPROFILE%\.android\backsight-release`.
+Keep a private backup of **both files** somewhere safe, separate from GitHub.
+Losing the key prevents future builds from updating this installed app; anyone
+who obtains both files can sign updates as you. Do not commit or publish them.
+The signed app has a separate application ID from the earlier debug test app,
+so both can remain installed and their app data are separate.
+
+For each release, increment the same numeric version in `Cargo.toml` (workspace
+package), `app/package.json`, `app/package-lock.json`, and
+`app/src-tauri/tauri.conf.json`. Commit and push the source, then run
+`powershell -ExecutionPolicy Bypass -File scripts/build-android-release.ps1`.
+The script needs the Android SDK, NDK, Rust target and generated Tauri Android
+files described above, plus the signing key. It builds an arm64 APK and verifies
+its signature and 16 KB alignment. Review and test it on the Pixel, then create
+a GitHub release from that exact commit using a tag such as `android-v0.1.1` and
+attach the APK as `backsight-android-arm64.apk`. The app only sees published,
+non-prerelease releases. Keep the version code increasing and always use the
+same signing key.
