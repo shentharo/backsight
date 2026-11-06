@@ -104,7 +104,7 @@ function CameraRow({
 
   return (
     <div className="flex items-start gap-4 px-5 py-4">
-      <div className="aspect-video w-[88px] shrink-0 overflow-hidden rounded-lg">
+      <div className="aspect-video w-[88px] shrink-0 overflow-hidden rounded-lg max-[600px]:hidden">
         <CameraSnapshot camera={camera} showPlaceholderLabel={false} />
       </div>
       <div className="min-w-0 flex-1">

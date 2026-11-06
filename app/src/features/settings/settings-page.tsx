@@ -74,7 +74,7 @@ export function SettingsPage() {
             ))}
           </div>
         ) : (
-          <div className="grid gap-9">
+          <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-9">
             <AppearanceSection theme={settings.data.theme} onThemeChange={(theme) => update.mutate({ theme })} />
             <ExportSettingsSection
               settings={settings.data}

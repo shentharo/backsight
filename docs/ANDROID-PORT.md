@@ -26,3 +26,7 @@ The existing desktop export directory and file-reveal behavior are not yet
 adapted to Android's scoped storage. Automatic discovery and actual camera
 models also need device testing. Camera firmware that only supports TPAP,
 battery cameras and hubs remain outside the upstream project's support.
+
+On a Pixel 10 running GrapheneOS, a simulated C200 camera was added and its
+live test video and recording thumbnails displayed successfully. This does not
+verify authentication, playback or compatibility with a physical camera.
