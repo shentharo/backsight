@@ -1,7 +1,10 @@
 //! Camera passwords, kept in the OS credential store (Windows Credential Manager,
 //! macOS Keychain, Secret Service on Linux) and never in the app's database or logs.
 
+#[cfg(not(target_os = "android"))]
 use keyring::v1::Entry;
+#[cfg(target_os = "android")]
+use keyring_core::Entry;
 
 use crate::error::{ApiError, ApiResult};
 use crate::model::CameraAccount;

@@ -95,7 +95,7 @@ impl Previews {
 
 /// The URL the webview loads a preview from.
 pub fn url(camera_id: &str, saved_at_ms: i64) -> String {
-    if cfg!(windows) {
+    if cfg!(any(windows, target_os = "android")) {
         format!("http://{SCHEME}.localhost/preview/{camera_id}/{saved_at_ms}")
     } else {
         format!("{SCHEME}://localhost/preview/{camera_id}/{saved_at_ms}")

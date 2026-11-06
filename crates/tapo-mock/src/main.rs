@@ -17,6 +17,9 @@ struct Args {
     /// Number of cameras, on 127.0.0.2, 127.0.0.3, …
     #[arg(long, default_value_t = 2)]
     count: u8,
+    /// First loopback address to bind; useful with adb reverse on 127.0.0.1.
+    #[arg(long, default_value_t = 2)]
+    first_loopback_octet: u8,
     /// Password the cameras accept.
     #[arg(long, default_value = "mock")]
     password: String,
@@ -44,7 +47,10 @@ async fn main() -> anyhow::Result<()> {
     let mut cameras = Vec::new();
     for i in 0..args.count {
         let mut options = MockOptions::new(&args.password);
-        options.ip = IpAddr::V4(Ipv4Addr::new(127, 0, 0, 2 + i));
+        let last_octet = args.first_loopback_octet.checked_add(i)
+            .filter(|octet| *octet > 0 && *octet < 255)
+            .ok_or_else(|| anyhow::anyhow!("loopback address is out of range"))?;
+        options.ip = IpAddr::V4(Ipv4Addr::new(127, 0, 0, last_octet));
         options.control_port = 443;
         options.media_port = 8800;
         options.name = names[usize::from(i) % names.len()].into();

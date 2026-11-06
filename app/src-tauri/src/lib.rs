@@ -78,6 +78,8 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .register_asynchronous_uri_scheme_protocol(thumbnails::SCHEME, thumbnail_protocol)
         .setup(|app| {
+            #[cfg(target_os = "android")]
+            keyring_core::set_default_store(android_native_keyring_store::Store::new()?);
             let data_dir = app.path().app_data_dir()?;
             std::fs::create_dir_all(&data_dir)?;
             let db = Arc::new(Db::open(&data_dir.join("backsight.db"))?);

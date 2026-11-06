@@ -26,7 +26,7 @@ const IDLE_CLOSE: Duration = Duration::from_secs(5);
 /// The URL for the thumbnail of the recording that starts at `camera_start`
 /// (camera-clock seconds).
 pub fn url(camera_id: &str, camera_start: i64) -> String {
-    if cfg!(windows) {
+    if cfg!(any(windows, target_os = "android")) {
         format!("http://{SCHEME}.localhost/{camera_id}/{camera_start}")
     } else {
         format!("{SCHEME}://localhost/{camera_id}/{camera_start}")

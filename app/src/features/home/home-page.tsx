@@ -57,7 +57,7 @@ export function HomePage() {
   return (
     <div className="relative flex-1">
       <div aria-hidden className="hero-glow pointer-events-none absolute inset-x-0 top-0 h-[320px]" />
-      <div className="relative mx-auto w-full max-w-[1680px] px-8 pb-14 pt-9 max-[1099px]:px-6">
+      <div className="relative mx-auto w-full max-w-[1680px] px-8 pb-14 pt-9 max-[1099px]:px-6 max-[600px]:px-3">
         <header className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
           <div className="min-w-0">
             <p className="text-[13px] font-medium text-fg-2">{dateLabel}</p>
@@ -75,7 +75,7 @@ export function HomePage() {
         </header>
 
         {cameras.isPending ? (
-          <div className="mt-9 grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(248px,1fr))]">
+          <div className="mt-9 grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(min(100%,248px),1fr))]">
             {Array.from({ length: 6 }, (_, i) => (
               <CameraCardSkeleton key={i} />
             ))}
@@ -145,7 +145,7 @@ export function HomePage() {
                 </Card>
               ) : (
                 <LayoutGroup>
-                  <div className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(248px,1fr))]">
+                  <div className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(min(100%,248px),1fr))]">
                     <AnimatePresence mode="popLayout" initial={false}>
                       {filtered.map((camera) => (
                         <CameraCard

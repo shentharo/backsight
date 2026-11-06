@@ -74,7 +74,7 @@ export function CameraPage() {
 
   const cam = camera.data;
   return (
-    <Tabs value={tab} onValueChange={setTab} className="flex flex-1 flex-col px-8 pb-8 pt-6 max-[1099px]:px-6">
+    <Tabs value={tab} onValueChange={setTab} className="flex flex-1 flex-col px-8 pb-8 pt-6 max-[1099px]:px-6 max-[600px]:px-3">
       <header className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-3">
         <IconButton label={strings.camera.back} variant="outline" asChild tooltipSide="bottom">
           <Link to="/">
@@ -134,7 +134,7 @@ export function CameraPage() {
           </TabsContent>}
         </>
       ) : (
-        <div className="grid gap-5 [grid-template-columns:minmax(0,1fr)_320px]">
+        <div className="grid gap-5 [grid-template-columns:minmax(0,1fr)_320px] max-[800px]:[grid-template-columns:minmax(0,1fr)]">
           <Skeleton className="aspect-video w-full rounded-card" />
           <Skeleton className="h-full min-h-[320px] rounded-card" />
         </div>

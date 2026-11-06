@@ -110,7 +110,7 @@ export function LiveTab({ camera }: { camera: Camera }) {
   const recordAvailable = info.viewable && camera.storage?.present && camera.storage.recordingMode === "continuous";
 
   return (
-    <div className="grid gap-5 [grid-template-columns:minmax(0,1fr)_320px] max-[1199px]:[grid-template-columns:minmax(0,1fr)_280px]">
+    <div className="grid gap-5 [grid-template-columns:minmax(0,1fr)_320px] max-[1199px]:[grid-template-columns:minmax(0,1fr)_280px] max-[800px]:[grid-template-columns:minmax(0,1fr)]">
       <div className="flex min-w-0 flex-col gap-4">
         <div className="mx-auto w-full" style={{ maxWidth: "calc((100dvh - 330px) * 16 / 9)", minWidth: "min(100%, 480px)" }}>
           <VideoStage

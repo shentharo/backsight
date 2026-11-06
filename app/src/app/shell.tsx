@@ -30,7 +30,8 @@ function useSidebarCollapsed(): [boolean, (collapsed: boolean) => void] {
   const pref = useUiStore((s) => s.sidebarCollapsed);
   const set = useUiStore((s) => s.setSidebarCollapsed);
   const narrow = useMediaQuery("(max-width: 1099px)");
-  return [pref ?? narrow, (collapsed) => set(collapsed)];
+  const phone = useMediaQuery("(max-width: 600px)");
+  return [phone || (pref ?? narrow), (collapsed) => set(collapsed)];
 }
 
 function Sidebar() {
@@ -86,7 +87,7 @@ function Sidebar() {
         <NavLink item={settings} active={settings.isActive(path)} collapsed={collapsed} />
       </nav>
 
-      <div className={cn("flex px-3 pb-4 pt-2", collapsed ? "justify-center" : "justify-start")}>
+      <div className={cn("flex px-3 pb-4 pt-2 max-[600px]:hidden", collapsed ? "justify-center" : "justify-start")}>
         <Tooltip content={collapsed ? strings.nav.expand : strings.nav.collapse} side="right">
           <button
             type="button"
